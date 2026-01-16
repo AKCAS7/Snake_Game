@@ -5,13 +5,6 @@ screen.setup( width = 600, height = 600 )
 screen.bgcolor("black")
 screen.title(" The Snake Game ")
 
-
-t1 = Turtle()
-t2 = Turtle()
-t3 = Turtle()
-
-turtles = [t1, t2, t3]
-
 '''
 t1.shape("square")
 t2.shape("square")
@@ -48,3 +41,4 @@ for position in positions:
 
 
 screen.exitonclick()
+
