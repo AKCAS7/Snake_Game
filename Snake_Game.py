@@ -6,9 +6,6 @@ screen.bgcolor("black")
 screen.title(" The Snake Game ")
 
 '''
-t1.shape("square")
-t2.shape("square")
-t3.shape("square")
 
 t1.color("white")
 t2.color("white")
@@ -41,4 +38,5 @@ for position in positions:
 
 
 screen.exitonclick()
+
 
