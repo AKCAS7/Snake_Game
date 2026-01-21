@@ -1,4 +1,5 @@
-from turtle import Turtle, Screen, time
+from turtle import Turtle, Screen
+import time
 
 screen  = Screen()
 screen.setup( width = 600, height = 600 )
@@ -20,9 +21,9 @@ for position in positions:
     turtles.append(t)
 
 while game_on:
+    screen.update()
     for t in turtles:
         t.forward(20)
-        screen.update()
         time.sleep(1)
 
 screen.exitonclick()
@@ -40,6 +41,7 @@ screen.exitonclick()
 
 
 screen.exitonclick()
+
 
 
 
