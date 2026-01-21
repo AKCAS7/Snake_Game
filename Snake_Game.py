@@ -7,39 +7,30 @@ screen.bgcolor("black")
 screen.title(" The Snake Game ")
 screen.tracer(0)
 
-positions = [ (0,0), (-20,0), (-40,0) ]
+starting_positions = [ (0,0), (-20,0), (-40,0) ]
 
 turtles = []
 game_on = True
 
-for position in positions:
-    t = Turtle()
-    t.penup()
-    t.shape("square")
-    t.color("white")
-    t.goto(position)
-    turtles.append(t)
+for position in starting_positions:
+    new_turtle = Turtle()
+    new_turtle.shape("square")
+    new_turtle.penup()
+    new_turtle.color("white")
+    new_turtle.goto(position)
+    turtles.append(new_turtle)
 
 while game_on:
     screen.update()
-    for t in turtles:
-        t.forward(20)
-        time.sleep(1)
+    time.sleep(0.1)
+    
+    for t_num in range( len(turtles) - 1, 0, 1 ):
+        new_x = turtles[t_num - 1].xcor()
+        new_y = turtles[t_num - 1].ycor() 
+        turtles[t_num].goto(new_x, new_y)
+    turtles[0].forward(20)
 
-screen.exitonclick()
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 screen.exitonclick()
 
 
