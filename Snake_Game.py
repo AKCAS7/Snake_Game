@@ -25,9 +25,6 @@ while game_on:
         screen.update()
         time.sleep(1)
 
-
-
-        
 screen.exitonclick()
 
 
@@ -43,6 +40,7 @@ screen.exitonclick()
 
 
 screen.exitonclick()
+
 
 
 
