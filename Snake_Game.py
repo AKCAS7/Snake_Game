@@ -24,7 +24,7 @@ while game_on:
     screen.update()
     time.sleep(0.1)
     
-    for t_num in range( len(turtles) - 1, 0, 1 ):
+    for t_num in range( len(turtles) - 1, 0, -1 ):
         new_x = turtles[t_num - 1].xcor()
         new_y = turtles[t_num - 1].ycor() 
         turtles[t_num].goto(new_x, new_y)
@@ -32,6 +32,7 @@ while game_on:
 
   
 screen.exitonclick()
+
 
 
 
