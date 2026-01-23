@@ -1,5 +1,10 @@
 from turtle import Turtle
 
-class Food:
+class Food(Turtle):
 
   def __init__(self):
+    super().__init__()
+    self.shape("circle")
+    self.penup()
+    self.shapsize(stretch_len = 0.5, stretch_wid = 0.5)
+    
