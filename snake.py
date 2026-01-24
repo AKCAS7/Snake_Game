@@ -1,79 +1,48 @@
 from turtle import Turtle
 
 MOVE_DISTANCE = 20
-STARTING_POSITIONS = [ (0,0), (-20,0), (-40,0) ]
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 
 class Snake:
-    
+
     def __init__(self):
-        self.turtles =[]
+        self.turtles = []
         self.create_snake()
+        self.head = self.turtles[0]
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            new_turtle = Turtle()
-            new_turtle.shape("square")
-            new_turtle.penup()
-            new_turtle.color("white")
-            new_turtle.goto(position)
-            self.turtles.append(new_turtle)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        segment = Turtle("square")
+        segment.color("white")
+        segment.penup()
+        segment.goto(position)
+        self.turtles.append(segment)
+
+    def extend(self):
+        self.add_segment(self.turtles[-1].position())
 
     def move_snake(self):
-        for t_num in range( len(self.turtles) - 1, 0, -1 ):
+        for t_num in range(len(self.turtles) - 1, 0, -1):
             new_x = self.turtles[t_num - 1].xcor()
-            new_y = self.turtles[t_num - 1].ycor() 
+            new_y = self.turtles[t_num - 1].ycor()
             self.turtles[t_num].goto(new_x, new_y)
-        self.turtles[0].forward(MOVE_DISTANCE)
-    
+        self.head.forward(MOVE_DISTANCE)
+
     def up(self):
-        for t_num in range( len(self.turtles) - 1, 0, -1):
-            new_x = self.turtles[t_num - 1].xcor()
-            new_y = self.turtles[t_num - 1].ycor() 
-            self.turtles[t_num].goto(new_x, new_y)
-            x = self.turtles[0].heading()
-        if x == 0:
-            self.turtles[0].left(90)
-        elif x == 180:
-            self.turtles[0].right(90)
-        elif x == 270:
-            self.turtles[0].left(180)
+        if self.head.heading() != 270:
+            self.head.setheading(90)
 
     def down(self):
-        for t_num in range( len(self.turtles) - 1, 0, -1):
-            new_x = self.turtles[t_num - 1].xcor()
-            new_y = self.turtles[t_num - 1].ycor() 
-            self.turtles[t_num].goto(new_x, new_y)
-            x = self.turtles[0].heading()
-        if x == 0:
-            self.turtles[0].right(90)
-        elif x == 180:
-            self.turtles[0].left(90)
-        elif x == 90:
-            self.turtles[0].right(180)
+        if self.head.heading() != 90:
+            self.head.setheading(270)
 
     def left(self):
-        for t_num in range( len(self.turtles) - 1, 0, -1):
-            new_x = self.turtles[t_num - 1].xcor()
-            new_y = self.turtles[t_num - 1].ycor() 
-            self.turtles[t_num].goto(new_x, new_y)
-            x = self.turtles[0].heading()
-        if x == 0:
-            self.turtles[0].left(180)
-        elif x == 90:
-            self.turtles[0].left(90)
-        elif x == 270:
-            self.turtles[0].right(90)
+        if self.head.heading() != 0:
+            self.head.setheading(180)
 
     def right(self):
-        for t_num in range( len(self.turtles) - 1, 0, -1):
-            new_x = self.turtles[t_num - 1].xcor()
-            new_y = self.turtles[t_num - 1].ycor() 
-            self.turtles[t_num].goto(new_x, new_y)
-            x = self.turtles[0].heading()
-        if x == 90:
-            self.turtles[0].right(90)
-        elif x == 180:
-            self.turtles[0].right(180)
-        elif x == 270:
-            self.turtles[0].left(90)
-            
+        if self.head.heading() != 180:
+            self.head.setheading(0)
