@@ -14,6 +14,7 @@ turtles = []
 game_on = True
 
 snake = Snake()
+food = Food()
 
 screen.listen()
 screen.onkey( snake.up, "Up" )
@@ -25,9 +26,12 @@ while game_on:
     screen.update()
     time.sleep(0.1)
     snake.move_snake()
+    if snake.head.distance() < 15:
+        food.new_loc()
 
   
 screen.exitonclick()
+
 
 
 
