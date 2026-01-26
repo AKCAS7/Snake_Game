@@ -25,6 +25,8 @@ class Snake:
         self.add_segment(self.turtles[-1].position())
 
     def reset(self):
+        for seg in self.segments:
+            seg.goto( 1000, 1000 )
         self.segment.clear()
         self.create()
         self.head = self.turtles[0]
@@ -51,4 +53,5 @@ class Snake:
     def right(self):
         if self.head.heading() != 180:
             self.head.setheading(0)
+
 
