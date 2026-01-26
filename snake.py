@@ -24,6 +24,11 @@ class Snake:
     def extend(self):
         self.add_segment(self.turtles[-1].position())
 
+    def reset(self):
+        self.segment.clear()
+        self.create()
+        self.head = self.turtles[0]
+
     def move_snake(self):
         for t_num in range(len(self.turtles) - 1, 0, -1):
             new_x = self.turtles[t_num - 1].xcor()
@@ -46,3 +51,4 @@ class Snake:
     def right(self):
         if self.head.heading() != 180:
             self.head.setheading(0)
+
